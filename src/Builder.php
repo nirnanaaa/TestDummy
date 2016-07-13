@@ -284,7 +284,7 @@ class Builder
 
         foreach ($modelAttributes as $columnName => $value) {
             if ($relationship = $this->findRelation($value)) {
-                $entity[$columnName] = $this->fetchRelationId($relationship, $columnName, $attributes);
+                $entity->{'set' . ucfirst($columnName)}($this->fetchRelationId($relationship, $columnName, $attributes));
             }
         }
 
